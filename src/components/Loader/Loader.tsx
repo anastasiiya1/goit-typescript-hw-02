@@ -1,8 +1,9 @@
+import React from 'react';
 import { InfinitySpin } from "react-loader-spinner";
 
-const Loader = () => {
+const Loader: React.FC = () => {
   return (
-    <div >
+    <div>
       <InfinitySpin
         visible={true}
         width="200"

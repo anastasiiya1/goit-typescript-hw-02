@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import SearchBar from "./components/SearchBar/SearchBar";
-import fetchImages from "./fetchImages";
+import fetchImages, { Image } from "./fetchImages";
 import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
-import './App.css'
+import './App.css';
 
 function App() {
-  const [query, setQuery] = useState("");
-  const [images, setImages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [empty, setEmpty] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [query, setQuery] = useState<string>("");
+  const [images, setImages] = useState<Image[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error | null>(null);
+  const [empty, setEmpty] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
   useEffect(() => {
     if (!query) {
@@ -35,7 +35,7 @@ function App() {
         setImages((prevImages) => [...prevImages, ...response]);
         setIsVisible(page > 0);
       } catch (error) {
-        setError(error);
+        setError(error as Error);
       } finally {
         setLoading(false);
       }
@@ -43,7 +43,7 @@ function App() {
     renderImages();
   }, [query, page]);
 
-  function handleSubmit(searchQuery) {
+  function handleSubmit(searchQuery: string) {
     setImages([]);
     setPage(1);
     setEmpty(false);
@@ -53,7 +53,7 @@ function App() {
     setPage(page + 1);
   }
 
-  function openModal(image) {
+  function openModal(image: Image) {
     setSelectedImage(image);
     setModalIsOpen(true);
   }
