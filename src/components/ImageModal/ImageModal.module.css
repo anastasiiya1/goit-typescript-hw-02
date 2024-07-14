@@ -1,0 +1,36 @@
+.modalContent {
+	position: relative;
+	background: white;
+	padding: 20px;
+	border-radius: 10px;
+	outline: none;
+	width: 80%;
+	max-width: 800px;
+	margin: 0 auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modalImage {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+	margin-bottom: 20px;
+  }
+  
+  .modalHeader {
+	margin-bottom: 10px;
+	font-size: 1.5em;
+	color: #333;
+  }
+  
+  .modalDescription, .modalLikes {
+	margin-bottom: 10px;
+	font-size: 1em;
+	color: #666;
+  }
+  
+  .modalAuthor {
+	font-size: 1.2em;
+	color: #333;
+	margin-bottom: 20px;
+  }
